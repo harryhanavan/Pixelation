@@ -1,0 +1,21 @@
+Original Image,Pixelated Image,Pixelation Type,Parameters,SSIM,PSNR
+000001.jpg,000001_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.364436069757453,29.19066368398478
+000001.jpg,000001_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.3643303322287685,28.912934147129423
+000002.jpg,000002_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.4774176486220737,29.431762301669888
+000002.jpg,000002_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.4707884221549667,28.731958708498546
+000003.jpg,000003_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.7577834063693325,32.55062967010207
+000003.jpg,000003_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.75852158468382,31.054872161687182
+000004.jpg,000004_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.43263734309442514,29.99923259158721
+000004.jpg,000004_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.40566703286456574,29.820877006018094
+000005.jpg,000005_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.5779705146214421,30.247857972670026
+000005.jpg,000005_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.5792972482655662,29.71575655188607
+000006.jpg,000006_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.4924192204684101,29.91113289636857
+000006.jpg,000006_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.4935928311989956,29.55770870829815
+000007.jpg,000007_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.4722514806240583,29.69016733526926
+000007.jpg,000007_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.4721018648860075,29.06425377132003
+000008.jpg,000008_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.49611386936697394,29.946550300592826
+000008.jpg,000008_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.4931283426556982,29.5121382695652
+000009.jpg,000009_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.47237353306185065,29.755723237930532
+000009.jpg,000009_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.466294816841756,29.287345341807406
+000010.jpg,000010_Basic Pixelization_block_size10.jpg,Basic Pixelization,block,0.5423069955950891,30.249900004969366
+000010.jpg,000010_Clustering with Pixelization_num_clusters8_block_size10.jpg,Clustering with Pixelization,num_clusters8_block,0.5230813309205906,29.36290220194291

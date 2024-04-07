@@ -36,92 +36,82 @@ def apply_basic_pixelization(image, block_size=10):
 
     return pixelized_image
 
-def apply_adaptive_pixelization(image, base_block_size=10, detail_threshold=30):
+def apply_gaussian_blur(image, kernel_size=(15, 15)):
     """
-    Apply adaptive pixelization to an image.
+    Applies Gaussian blur to the image.
     
-    Parameters:
-        image: The input image as a NumPy array.
-        base_block_size: The base size of each block for pixelization.
-        detail_threshold: The threshold for the standard deviation to determine detailed areas.
-        
-    Returns:
-        The pixelized image as a NumPy array.
+    :param image: Input image.
+    :param kernel_size: Size of the Gaussian kernel.
+    :return: Blurred image.
     """
-    # Get the dimensions of the image
-    height, width, _ = image.shape
+    return cv2.GaussianBlur(image, kernel_size, 0)
 
-    # Create a copy of the image to modify
-    pixelized_image = np.copy(image)
+def apply_adaptive_pixelation(image, min_block_size=5, max_block_size=15, variance_threshold=50):
+    """
+    Applies adaptive pixelation to an image based on local variance.
 
-    # Loop through the image in steps of base_block_size
-    for y in range(0, height, base_block_size):
-        for x in range(0, width, base_block_size):
-            # Define the coordinates of the current block
-            y1, y2 = y, min(y + base_block_size, height)
-            x1, x2 = x, min(x + base_block_size, width)
+    :param image: Input image.
+    :param min_block_size: Minimum block size for pixelation.
+    :param max_block_size: Maximum block size for pixelation.
+    :param variance_threshold: Threshold for variance to decide block size.
+    :return: Pixelated image.
+    """
+    # Convert the image to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-            # Calculate the standard deviation of the block
-            block = image[y1:y2, x1:x2]
-            std_dev = np.std(block)
+    # Initialize the output image
+    output = np.zeros_like(image)
 
-            # Determine the block size based on the detail threshold
-            if std_dev > detail_threshold:
-                block_size = base_block_size // 2  # More detailed pixelization
+    # Define the step size for processing blocks
+    step_size = min_block_size
+
+    # Iterate over the image in blocks
+    for y in range(0, gray.shape[0], step_size):
+        for x in range(0, gray.shape[1], step_size):
+            # Compute the local variance
+            block = gray[y:y+step_size, x:x+step_size]
+            local_variance = np.var(block)
+
+            # Determine the block size based on variance
+            if local_variance < variance_threshold:
+                block_size = max_block_size
             else:
-                block_size = base_block_size
+                block_size = min_block_size
 
-            # Apply pixelization with the determined block size
-            for sub_y in range(y1, y2, block_size):
-                for sub_x in range(x1, x2, block_size):
-                    sub_y1, sub_y2 = sub_y, min(sub_y + block_size, y2)
-                    sub_x1, sub_x2 = sub_x, min(sub_x + block_size, x2)
-                    sub_block = image[sub_y1:sub_y2, sub_x1:sub_x2]
-                    average_color = np.mean(sub_block, axis=(0, 1)).astype(int)
-                    pixelized_image[sub_y1:sub_y2, sub_x1:sub_x2] = average_color
+            # Ensure the block size does not exceed the image boundaries
+            block_size = min(block_size, gray.shape[0] - y, gray.shape[1] - x)
 
-    return pixelized_image
+            # Pixelate the block in the output image
+            color = np.mean(image[y:y+block_size, x:x+block_size], axis=(0, 1), dtype=int)
+            output[y:y+block_size, x:x+block_size] = color
+
+    return output   
 
 
 
 def apply_clustering_with_pixelization(image, num_clusters=8, block_size=10):
     """
-    Apply clustering with pixelization to an image.
+    Applies pixelation using k-means clustering to group similar pixels.
     
-    Parameters:
-        image: The input image as a NumPy array.
-        num_clusters: The number of clusters for the k-means algorithm.
-        block_size: The size of each block for pixelization.
-        
-    Returns:
-        The pixelized image as a NumPy array.
+    :param image: Input image.
+    :param num_clusters: Number of clusters for k-means.
+    :param block_size: Size of the blocks for pixelation.
+    :return: Pixelated image.
     """
-    # Reshape the image for clustering
-    reshaped_image = image.reshape((-1, 3))
+    # Reshape the image to a 2D array of pixels
+    pixel_values = image.reshape((-1, 3))
+    pixel_values = np.float32(pixel_values)
 
     # Apply k-means clustering
-    kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(reshaped_image)
-    clustered_image = kmeans.cluster_centers_[kmeans.labels_].reshape(image.shape).astype(int)
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
+    _, labels, centers = cv2.kmeans(pixel_values, num_clusters, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
 
-    # Get the dimensions of the clustered image
-    height, width, _ = clustered_image.shape
+    # Convert centers to uint8 and reshape to the original image shape
+    centers = np.uint8(centers)
+    clustered_image = centers[labels.flatten()]
+    clustered_image = clustered_image.reshape(image.shape)
 
-    # Create a copy of the clustered image to modify
-    pixelized_image = np.copy(clustered_image)
+    # Apply basic pixelation to the clustered image
+    return apply_basic_pixelization(clustered_image, block_size)
 
-    # Loop through the image in steps of block_size
-    for y in range(0, height, block_size):
-        for x in range(0, width, block_size):
-            # Define the coordinates of the current block
-            y1, y2 = y, min(y + block_size, height)
-            x1, x2 = x, min(x + block_size, width)
-
-            # Calculate the average color of the block
-            block = clustered_image[y1:y2, x1:x2]
-            average_color = np.mean(block, axis=(0, 1)).astype(int)
-
-            # Set the color of the block to the average color
-            pixelized_image[y1:y2, x1:x2] = average_color
-
-    return pixelized_image
 
