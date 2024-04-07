@@ -4,7 +4,6 @@ import os
 import subprocess
 import cv2
 import csv
-from image_processing import process_images
 from pixelation_methods import apply_basic_pixelization, apply_clustering_with_pixelization, apply_gaussian_blur, apply_adaptive_pixelation
 from evaluation_metrics import calculate_psnr, calculate_ssim
 
@@ -12,50 +11,92 @@ from evaluation_metrics import calculate_psnr, calculate_ssim
 # Global variables for folder paths
 input_folder = "Input"
 output_folder = "Output"
+evaluation_folder = "Evaluation"
 input_folder_label = None
 output_folder_label = None
+evaluation_folder_label = None
 input_listbox = None
 params = None
 selected_method = None
+description_text = None
+
 
 def open_file():
     filename = filedialog.askopenfilename(title="Select an Image", filetypes=(("JPEG files", "*.jpg"), ("PNG files", "*.png")))
     return filename
 
 def update_params(frame, method):
-    global params
+    """
+    Update the parameters section of the GUI based on the selected pixelation method.
+    
+    Parameters:
+        frame: The frame where the parameter widgets are placed.
+        method: The selected pixelation method.
+    """
     for widget in frame.winfo_children():
         widget.destroy()
 
+    description_text.delete('1.0', tk.END)  # Clear the description text
+
     if method == "Basic Pixelization":
-        block_size = tk.IntVar(value=10)
-        tk.Label(frame, text="Block Size:").pack()
-        tk.Entry(frame, textvariable=block_size).pack()
-        params = {"block_size": block_size}
+        block_size_label = tk.Label(frame, text="Block Size:")
+        block_size_label.grid(row=0, column=0, padx=5, pady=5)
+        block_size_entry = tk.Entry(frame)
+        block_size_entry.grid(row=0, column=1, padx=5, pady=5)
+        params["block_size"] = block_size_entry
 
-    elif method == "Adaptive Pixelization":
-        base_block_size = tk.IntVar(value=10)
-        detail_threshold = tk.IntVar(value=30)
-        tk.Label(frame, text="Base Block Size:").pack()
-        tk.Entry(frame, textvariable=base_block_size).pack()
-        tk.Label(frame, text="Detail Threshold:").pack()
-        tk.Entry(frame, textvariable=detail_threshold).pack()
-        params = {"base_block_size": base_block_size, "detail_threshold": detail_threshold}
-
-    elif method == "Clustering with Pixelization":
-        num_clusters = tk.IntVar(value=8)
-        block_size = tk.IntVar(value=10)
-        tk.Label(frame, text="Number of Clusters:").pack()
-        tk.Entry(frame, textvariable=num_clusters).pack()
-        tk.Label(frame, text="Block Size:").pack()
-        tk.Entry(frame, textvariable=block_size).pack()
-        params = {"num_clusters": num_clusters, "block_size": block_size}
+        description_text.insert(tk.END, "Basic Pixelization:\nThis method divides the image into uniform square blocks and replaces each block with a solid color representing the average color of the pixels within that block. The 'Block Size' parameter determines the size of these blocks. A smaller block size results in finer pixelation, preserving more details, while a larger block size creates a more abstract, mosaic-like effect.")
 
     elif method == "Gaussian Blur":
-        kernel_size = tk.IntVar(value=15)
-        tk.Label(frame, text="Kernel Size:").pack()
-        tk.Entry(frame, textvariable=kernel_size).pack()
-        params = {"kernel_size": kernel_size}
+        kernel_size_label = tk.Label(frame, text="Kernel Size:")
+        kernel_size_label.grid(row=0, column=0, padx=5, pady=5)
+        kernel_size_entry = tk.Entry(frame)
+        kernel_size_entry.grid(row=0, column=1, padx=5, pady=5)
+        params["kernel_size"] = kernel_size_entry
+
+        description_text.insert(tk.END, "\n\nGaussian Blur:\nThis method applies a Gaussian blur to the image, creating a smooth, blurred effect. The 'Kernel Size' parameter determines the size of the kernel used for blurring. A larger kernel size results in a stronger blur effect, making the image more blurry, while a smaller kernel size retains more of the image's details. The kernel size should be an odd number to ensure a symmetric blur effect.")
+
+    elif method == "Adaptive Pixelization":
+        min_block_size_label = tk.Label(frame, text="Min Block Size:")
+        min_block_size_label.grid(row=0, column=0, padx=5, pady=5)
+        min_block_size_entry = tk.Entry(frame)
+        min_block_size_entry.grid(row=0, column=1, padx=5, pady=5)
+        params["min_block_size"] = min_block_size_entry
+
+        max_block_size_label = tk.Label(frame, text="Max Block Size:")
+        max_block_size_label.grid(row=1, column=0, padx=5, pady=5)
+        max_block_size_entry = tk.Entry(frame)
+        max_block_size_entry.grid(row=1, column=1, padx=5, pady=5)
+        params["max_block_size"] = max_block_size_entry
+
+        variance_threshold_label = tk.Label(frame, text="Variance Threshold:")
+        variance_threshold_label.grid(row=2, column=0, padx=5, pady=5)
+        variance_threshold_entry = tk.Entry(frame)
+        variance_threshold_entry.grid(row=2, column=1, padx=5, pady=5)
+        params["variance_threshold"] = variance_threshold_entry
+
+        description_text.insert(tk.END, "\n\nAdaptive Pixelization:\nThis method adjusts the pixelization block size based on the local variance of the image. Areas with higher variance (more detail or texture) are pixelized with smaller blocks, while areas with lower variance (more uniform) use larger blocks. 'Min Block Size' sets the smallest block size used for high-variance areas, while 'Max Block Size' sets the largest block size for low-variance areas. 'Variance Threshold' determines the level of variance at which the block size changes. A lower threshold means that more areas will be considered high-variance and pixelized with smaller blocks.")
+
+    elif method == "Clustering with Pixelization":
+        num_clusters_label = tk.Label(frame, text="Number of Clusters:")
+        num_clusters_label.grid(row=0, column=0, padx=5, pady=5)
+        num_clusters_entry = tk.Entry(frame)
+        num_clusters_entry.grid(row=0, column=1, padx=5, pady=5)
+        params["num_clusters"] = num_clusters_entry
+
+        block_size_label = tk.Label(frame, text="Block Size:")
+        block_size_label.grid(row=1, column=0, padx=5, pady=5)
+        block_size_entry = tk.Entry(frame)
+        block_size_entry.grid(row=1, column=1, padx=5, pady=5)
+        params["block_size"] = block_size_entry
+
+        description_text.insert(tk.END, "\n\nClustering with Pixelization:\nThis method combines k-means clustering with pixelization. First, k-means clustering groups similar pixels into clusters based on their color values. Then, basic pixelization is applied to each cluster separately. 'Number of Clusters' determines how many clusters are created; a higher number results in more clusters and a more detailed image, while a lower number creates fewer clusters and a more abstract image. 'Block Size' sets the size of the pixelization blocks, with the same effects as in basic pixelization.")
+
+method_descriptions = {
+    "Basic Pixelization": "Basic Pixelization description...\n\nBlock Size: Description of block size parameter...",
+    "Gaussian Blur": "Gaussian Blur description...\n\nKernel Size: Description of kernel size parameter...",
+    "Adaptive Pixelization": "Adaptive Pixelization description...\n\nMin Block Size: Description...\nMax Block Size: Description...\nVariance Threshold: Description...",
+}
 
 def upload_file():
     global input_folder
@@ -81,7 +122,6 @@ def open_input_folder():
         else:  # Windows
             subprocess.run(['explorer', os.path.normpath(input_folder)])
 
-
 def open_output_folder():
     global output_folder
     if os.path.exists(output_folder):
@@ -90,31 +130,23 @@ def open_output_folder():
         else:  # Windows
             subprocess.run(['explorer', os.path.normpath(output_folder)])
 
-
 def apply_pixelation(pixelation_method, method_name):
-    global input_folder, output_folder, params  # Declare params as a global variable here
-    if params is None:
-        messagebox.showerror("Error", "Parameters not set. Please select a pixelation method and set its parameters.")
-        return
+    global input_folder, output_folder
+    params_dict = {key: entry.get() for key, entry in params.items()}
+    
+    # Convert parameters to appropriate types
+    if method_name == "Basic Pixelization":
+        params_dict["block_size"] = int(params_dict["block_size"])
+
     for filename in os.listdir(input_folder):
-        if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-            input_path = os.path.join(input_folder, filename)
-            image = cv2.imread(input_path)
-
-            params_dict = {key: var.get() for key, var in params.items()}
+        if filename.endswith(('.png', '.jpg', '.jpeg')):
             print(f"Applying {method_name} with parameters {params_dict} to {filename}")
-
-            # Call the pixelation function with the selected parameters and filename
+            image_path = os.path.join(input_folder, filename)
+            image = cv2.imread(image_path)
             processed_image = pixelation_method(image, **params_dict)
-
-            # Format the output filename
-            name, ext = os.path.splitext(filename)
-            params_str = "_".join([f"{k}{v}" for k, v in params_dict.items()])
-            output_filename = f"{name}_{method_name}_{params_str}{ext}"
-
-            # Save the processed image to the Output folder
-            output_path = os.path.join(output_folder, output_filename)
+            output_path = os.path.join(output_folder, f"{method_name}_{filename}")
             cv2.imwrite(output_path, processed_image)
+
 
     messagebox.showinfo("Pixelation Complete", f"Pixelation applied successfully to all images in {input_folder}")
 
@@ -130,12 +162,12 @@ def evaluate_images():
         # Iterate through pixelated images in the Output folder
         for pixelated_filename in os.listdir("Output"):
             # Parse the original image ID from the pixelated image filename
-            parts = pixelated_filename.split('_')
+            parts = pixelated_filename.split('-')
             base_id = parts[0]
-            # Extract the pixelation type and parameters from the filename
             pixelation_type = parts[1]
-            parameters = "_".join(parts[2:-1])
-            # Assume original filename structure: {id}.jpg
+            parameters = "-".join(parts[2:])  # This will re-join the parameters correctly
+            parameters = parameters.replace(".jpg", "")  # Removes the file extension
+            parameters = parameters.replace("_", ", ")  # Replaces underscores with comma and space for CSV
             original_filename = f"{base_id}.jpg"
             original_image_path = os.path.join("Input", original_filename)
             pixelated_image_path = os.path.join("Output", pixelated_filename)
@@ -157,7 +189,7 @@ def evaluate_images():
                 psnr_value = calculate_psnr(original_image, pixelated_image)
 
                 # Write the results to CSV with the new fields for pixelation type and parameters
-                csv_writer.writerow([original_filename, pixelated_filename, pixelation_type, parameters, ssim_value, psnr_value])
+                csv_writer.writerow([original_filename, pixelated_filename, pixelation_type, f'"{parameters}"', ssim_value, psnr_value])
                 print(f"Processed {original_filename}: SSIM={ssim_value}, PSNR={psnr_value}")
             else:
                 print(f"Could not read {original_image_path} or {pixelated_image_path}. Skipping...")
@@ -172,8 +204,6 @@ def select_input_folder(input_listbox):
         refresh_input_folder_list(input_listbox)
         input_folder_label.config(text=f"Input Folder: {input_folder}")  # Update the input folder label
 
-
-
 def select_output_folder():
     global output_folder, output_folder_label
     selected_folder = filedialog.askdirectory(title="Select Output Folder")
@@ -181,17 +211,28 @@ def select_output_folder():
         output_folder = selected_folder
         output_folder_label.config(text=f"Output Folder: {output_folder}")  # Update the output folder label
 
-
 def revert_folders():
-    global input_folder, output_folder, input_listbox
-    input_folder = "Input"
-    output_folder = "Output"
-    refresh_input_folder_list(input_listbox)
-    input_folder_label.config(text=f"Input Folder: {input_folder}")  # Update the input folder label
-    output_folder_label.config(text=f"Output Folder: {output_folder}")  # Update the output folder label
+    global input_folder, output_folder, evaluation_folder
+    input_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'Input')
+    output_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'Output')
+    evaluation_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'Evaluation')
+    input_folder_label.config(text=f"Input Folder: {input_folder}")
+    output_folder_label.config(text=f"Output Folder: {output_folder}")
+    evaluation_folder_label.config(text=f"Evaluation Folder: {evaluation_folder}")
+    refresh_input_folder_list()
+
+def select_evaluation_folder():
+    global evaluation_folder
+    folder = filedialog.askdirectory()
+    if folder:
+        evaluation_folder = folder
+        evaluation_folder_label.config(text=f"Evaluation Folder: {evaluation_folder}")
+
+def open_evaluation_folder():
+    os.startfile(evaluation_folder)
 
 def create_gui():
-    global input_folder_label, output_folder_label, input_listbox, params, selected_method
+    global input_folder_label, output_folder_label, input_listbox, evaluation_folder_label, params, selected_method, description_text
     root = tk.Tk()
     root.title("Pixelation Project")
 
@@ -202,68 +243,95 @@ def create_gui():
         "Adaptive Pixelization": apply_adaptive_pixelation,
         "Clustering with Pixelization": apply_clustering_with_pixelization
     }
+    
+    params = {}  # Initialize params dictionary
 
-    # Upload button
-    btn_upload = tk.Button(root, text="Upload Image", command=lambda: upload_file())
-    btn_upload.pack()
+    # Frame for file operations
+    file_frame = tk.Frame(root)
+    file_frame.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
 
-    # Listbox for input folder
-    input_listbox = tk.Listbox(root)
-    input_listbox.pack()
-    refresh_input_folder_list(input_listbox)  # Initially populate the listbox with the contents of the input folder
+    btn_upload = tk.Button(file_frame, text="Upload Image", command=lambda: upload_file())
+    btn_upload.grid(row=0, column=0, padx=5, pady=5)
 
-    # Refresh button for input folder list
-    btn_refresh = tk.Button(root, text="Refresh Input Folder", command=lambda: refresh_input_folder_list())
-    btn_refresh.pack()
+    btn_refresh = tk.Button(file_frame, text="Refresh Input Folder", command=lambda: refresh_input_folder_list(input_listbox))
+    btn_refresh.grid(row=0, column=1, padx=5, pady=5)
 
-    # Dropdown menu for selecting pixelation method
-    pixelation_menu = ttk.Combobox(root, textvariable=selected_method, values=list(pixelation_methods.keys()), state="readonly")
-    pixelation_menu.pack()
+    btn_select_input = tk.Button(file_frame, text="Select Input Folder", command=lambda: select_input_folder(input_listbox))
+    btn_select_input.grid(row=0, column=2, padx=5, pady=5)
 
-    # Frame for parameters
-    params_frame = tk.Frame(root)
-    params_frame.pack()
+    btn_select_output = tk.Button(file_frame, text="Select Output Folder", command=select_output_folder)
+    btn_select_output.grid(row=0, column=3, padx=5, pady=5)
+
+    btn_revert_folders = tk.Button(file_frame, text="Revert to Default Folders", command=revert_folders)
+    btn_revert_folders.grid(row=0, column=4, padx=5, pady=5)
+
+    btn_open_input = tk.Button(file_frame, text="Open Input Folder", command=open_input_folder)
+    btn_open_input.grid(row=0, column=5, padx=5, pady=5)
+
+    btn_open_output = tk.Button(file_frame, text="Open Output Folder", command=open_output_folder)
+    btn_open_output.grid(row=0, column=6, padx=5, pady=5)
+
+    input_folder_label = tk.Label(file_frame, text=f"Input Folder: {input_folder}")
+    input_folder_label.grid(row=1, column=0, columnspan=4, padx=5, pady=5)
+
+    output_folder_label = tk.Label(file_frame, text=f"Output Folder: {output_folder}")
+    output_folder_label.grid(row=1, column=4, columnspan=3, padx=5, pady=5)
+    # Frame for evaluation folder operations
+    evaluation_frame = tk.Frame(root)
+    evaluation_frame.grid(row=4, column=0, padx=10, pady=10, sticky="ew")
+
+    btn_select_evaluation = tk.Button(evaluation_frame, text="Select Evaluation Folder", command=select_evaluation_folder)
+    btn_select_evaluation.grid(row=0, column=0, padx=5, pady=5)
+
+    btn_open_evaluation = tk.Button(evaluation_frame, text="Open Evaluation Folder", command=open_evaluation_folder)
+    btn_open_evaluation.grid(row=0, column=1, padx=5, pady=5)
+
+    evaluation_folder_label = tk.Label(evaluation_frame, text=f"Evaluation Folder: {evaluation_folder}")
+    evaluation_folder_label.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
+
+    # Frame for input folder listbox
+    input_frame = tk.Frame(root)
+    input_frame.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
+
+    input_listbox = tk.Listbox(input_frame)
+    input_listbox.pack(fill="both", expand=True)
+    # Frame for description
+    description_frame = tk.Frame(root)
+    description_frame.grid(row=1, column=1, rowspan=2, padx=10, pady=10, sticky="nsew")  # Extend the frame to span two rows
+
+    description_text = tk.Text(description_frame, wrap=tk.WORD, height=15, width=40)  # Increase the height
+    description_text.pack(fill="both", expand=True)
+
+    # Configure the grid to allocate extra space to the description frame's row
+    root.grid_rowconfigure(1, weight=1)
+
+    # Frame for pixelation options
+    pixelation_frame = tk.Frame(root)
+    pixelation_frame.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+
+    pixelation_menu = ttk.Combobox(pixelation_frame, textvariable=selected_method, values=list(pixelation_methods.keys()), state="readonly")
+    pixelation_menu.grid(row=0, column=0, padx=5, pady=5)
+
+    params_frame = tk.Frame(pixelation_frame)
+    params_frame.grid(row=1, column=0, padx=5, pady=5)
     update_params(params_frame, selected_method.get())  # Initialize params for the selected method
 
     def on_method_change(event):
         update_params(params_frame, selected_method.get())  # Update params when the method is changed
     pixelation_menu.bind("<<ComboboxSelected>>", on_method_change)
 
-    # Buttons for folder selection and reverting
-    btn_select_input = tk.Button(root, text="Select Input Folder", command=lambda: select_input_folder(input_listbox))
-    btn_select_input.pack()
+    btn_apply = tk.Button(pixelation_frame, text="Apply Pixelation", command=lambda: apply_pixelation(pixelation_methods[selected_method.get()], selected_method.get()))
+    btn_apply.grid(row=2, column=0, padx=5, pady=5)
 
-    btn_select_output = tk.Button(root, text="Select Output Folder", command=select_output_folder)
-    btn_select_output.pack()
+    # Frame for evaluation
+    evaluation_frame = tk.Frame(root)
+    evaluation_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
 
-    btn_revert_folders = tk.Button(root, text="Revert to Default Folders", command=revert_folders)
-    btn_revert_folders.pack()
-
-    # Buttons to open folders
-    btn_open_input = tk.Button(root, text="Open Input Folder", command=open_input_folder)
-    btn_open_input.pack()
-
-    btn_open_output = tk.Button(root, text="Open Output Folder", command=open_output_folder)
-    btn_open_output.pack()
-
-    # Button to apply pixelation
-    btn_apply = tk.Button(root, text="Apply Pixelation", command=lambda: apply_pixelation(pixelation_methods[selected_method.get()], selected_method.get()))
-    btn_apply.pack()
-
-    # Labels to display the current folder paths
-    input_folder_label = tk.Label(root, text=f"Input Folder: {input_folder}")
-    input_folder_label.pack()
-
-    output_folder_label = tk.Label(root, text=f"Output Folder: {output_folder}")
-    output_folder_label.pack()
-
-    # Button to trigger the evaluation
-    btn_evaluate = tk.Button(root, text="Evaluate Images", command=evaluate_images)
+    btn_evaluate = tk.Button(evaluation_frame, text="Evaluate Images", command=evaluate_images)
     btn_evaluate.pack()
 
     root.mainloop()
-
-
-
+ 
 if __name__ == "__main__":
     create_gui()
+

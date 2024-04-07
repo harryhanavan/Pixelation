@@ -36,14 +36,9 @@ def apply_basic_pixelization(image, block_size=10):
 
     return pixelized_image
 
-def apply_gaussian_blur(image, kernel_size=(15, 15)):
-    """
-    Applies Gaussian blur to the image.
-    
-    :param image: Input image.
-    :param kernel_size: Size of the Gaussian kernel.
-    :return: Blurred image.
-    """
+def apply_gaussian_blur(image, kernel_size):
+    # Ensure kernel_size is a tuple
+    kernel_size = (kernel_size, kernel_size)
     return cv2.GaussianBlur(image, kernel_size, 0)
 
 def apply_adaptive_pixelation(image, min_block_size=5, max_block_size=15, variance_threshold=50):
