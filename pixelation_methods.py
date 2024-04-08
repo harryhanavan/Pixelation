@@ -37,7 +37,6 @@ def apply_basic_pixelization(image, block_size=10):
     return pixelized_image
 
 def apply_gaussian_blur(image, kernel_size):
-    # Ensure kernel_size is a tuple
     kernel_size = (kernel_size, kernel_size)
     return cv2.GaussianBlur(image, kernel_size, 0)
 

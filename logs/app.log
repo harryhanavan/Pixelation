@@ -1,0 +1,90 @@
+2024-04-09 09:19:39,911 - INFO - Application stopped
+2024-04-09 09:19:59,442 - INFO - Logging configured
+2024-04-09 09:19:59,446 - INFO - Application started
+2024-04-09 09:19:59,617 - INFO - Current input folder: C:\Users\Harry\Documents\GitHub\Pixelation\Input
+2024-04-09 09:19:59,617 - INFO - Current output folder: C:\Users\Harry\Documents\GitHub\Pixelation\Output
+2024-04-09 09:19:59,617 - INFO - Current evaluation folder: C:\Users\Harry\Documents\GitHub\Pixelation\Evaluation
+2024-04-09 09:20:42,483 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000002.jpg
+2024-04-09 09:20:42,540 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000003.jpg
+2024-04-09 09:20:42,568 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000004.jpg
+2024-04-09 09:20:42,594 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000005.jpg
+2024-04-09 09:20:42,630 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000006.jpg
+2024-04-09 09:20:42,658 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000007.jpg
+2024-04-09 09:20:42,678 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000008.jpg
+2024-04-09 09:20:42,698 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000009.jpg
+2024-04-09 09:20:42,723 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 000010.jpg
+2024-04-09 09:20:42,751 - INFO - Applying Basic Pixelization with parameters {'block_size': 22} to 01.jpg
+2024-04-09 09:20:42,781 - INFO - Pixelation applied successfully to all images in C:/Users/Harry/Documents/GitHub/Pixelation/dist/Input, with 10 successful and 0 errors.
+2024-04-09 09:20:54,791 - INFO - Checking: Input\000001.jpg
+2024-04-09 09:20:54,791 - INFO - Exists: True
+2024-04-09 09:20:54,791 - INFO - Checking: Output\000001-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:54,791 - INFO - Exists: True
+2024-04-09 09:20:54,822 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:54,822 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,321 - INFO - Processed 000001.jpg: SSIM=0.3644381577808003, PSNR=29.19066368398478
+2024-04-09 09:20:55,326 - INFO - Checking: Input\000002.jpg
+2024-04-09 09:20:55,326 - INFO - Exists: True
+2024-04-09 09:20:55,326 - INFO - Checking: Output\000002-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,326 - INFO - Exists: True
+2024-04-09 09:20:55,349 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,349 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,364 - INFO - Processed 000002.jpg: SSIM=0.4774177088204054, PSNR=29.431762301669888
+2024-04-09 09:20:55,364 - INFO - Checking: Input\000003.jpg
+2024-04-09 09:20:55,364 - INFO - Exists: True
+2024-04-09 09:20:55,364 - INFO - Checking: Output\000003-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,373 - INFO - Exists: True
+2024-04-09 09:20:55,394 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,394 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,409 - INFO - Processed 000003.jpg: SSIM=0.7577867012978272, PSNR=32.55062967010207
+2024-04-09 09:20:55,413 - INFO - Checking: Input\000004.jpg
+2024-04-09 09:20:55,413 - INFO - Exists: True
+2024-04-09 09:20:55,413 - INFO - Checking: Output\000004-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,413 - INFO - Exists: True
+2024-04-09 09:20:55,446 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,446 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,455 - INFO - Processed 000004.jpg: SSIM=0.4326360505360056, PSNR=29.99923259158721
+2024-04-09 09:20:55,455 - INFO - Checking: Input\000005.jpg
+2024-04-09 09:20:55,455 - INFO - Exists: True
+2024-04-09 09:20:55,463 - INFO - Checking: Output\000005-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,463 - INFO - Exists: True
+2024-04-09 09:20:55,488 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,489 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,498 - INFO - Processed 000005.jpg: SSIM=0.5779793609151835, PSNR=30.247857972670026
+2024-04-09 09:20:55,505 - INFO - Checking: Input\000006.jpg
+2024-04-09 09:20:55,505 - INFO - Exists: True
+2024-04-09 09:20:55,505 - INFO - Checking: Output\000006-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,505 - INFO - Exists: True
+2024-04-09 09:20:55,529 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,529 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,545 - INFO - Processed 000006.jpg: SSIM=0.4924274434374629, PSNR=29.91113289636857
+2024-04-09 09:20:55,545 - INFO - Checking: Input\000007.jpg
+2024-04-09 09:20:55,545 - INFO - Exists: True
+2024-04-09 09:20:55,545 - INFO - Checking: Output\000007-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,545 - INFO - Exists: True
+2024-04-09 09:20:55,575 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,575 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,588 - INFO - Processed 000007.jpg: SSIM=0.4722531726361277, PSNR=29.69016733526926
+2024-04-09 09:20:55,588 - INFO - Checking: Input\000008.jpg
+2024-04-09 09:20:55,588 - INFO - Exists: True
+2024-04-09 09:20:55,588 - INFO - Checking: Output\000008-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,588 - INFO - Exists: True
+2024-04-09 09:20:55,621 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,621 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,633 - INFO - Processed 000008.jpg: SSIM=0.49611405541282844, PSNR=29.946550300592826
+2024-04-09 09:20:55,638 - INFO - Checking: Input\000009.jpg
+2024-04-09 09:20:55,638 - INFO - Exists: True
+2024-04-09 09:20:55,638 - INFO - Checking: Output\000009-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,638 - INFO - Exists: True
+2024-04-09 09:20:55,660 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,660 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,679 - INFO - Processed 000009.jpg: SSIM=0.4723734864400897, PSNR=29.755723237930532
+2024-04-09 09:20:55,679 - INFO - Checking: Input\000010.jpg
+2024-04-09 09:20:55,683 - INFO - Exists: True
+2024-04-09 09:20:55,683 - INFO - Checking: Output\000010-Basic Pixelization-block_size-10.jpg
+2024-04-09 09:20:55,683 - INFO - Exists: True
+2024-04-09 09:20:55,705 - INFO - Original image size: (218, 178, 3)
+2024-04-09 09:20:55,705 - INFO - Pixelated image size: (218, 178, 3)
+2024-04-09 09:20:55,722 - INFO - Processed 000010.jpg: SSIM=0.5423041962163451, PSNR=30.249900004969366
+2024-04-09 09:20:55,726 - INFO - Evaluation results saved in C:/Users/Harry/Documents/GitHub/Pixelation/dist/Evaluation\evaluation_results.csv
+2024-04-09 09:20:55,726 - INFO - Passed: 10. Errors occurred: 0
+2024-04-09 09:21:27,217 - INFO - Application stopped

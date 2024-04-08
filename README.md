@@ -2,7 +2,17 @@
 
 This project implements various pixelation techniques for image processing. Each method offers different approaches to pixelating an image, allowing for customization based on the desired outcome.
 
+## Features
+- Interactive GUI for easy operation.
+- Multiple pixelation methods, including basic pixelation, adaptive pixelation, Gaussian blur, and clustering with pixelization.
+- Evaluation metrics (PSNR and SSIM) for comparing original and pixelated images.
+- File and folder management for organizing input and output images.
+
 ## Pixelation Methods
+**Basic Pixelation**: Divides the image into blocks and replaces each block with its average color.
+- **Adaptive Pixelation**: Adjusts the block size based on the local variance of the image.
+- **Gaussian Blur**: Applies a Gaussian blur to the image for a smooth, blurred effect.
+- **Clustering with Pixelization**: Uses k-means clustering to group similar pixels and applies pixelation within each cluster.
 
 ### 1. Basic Pixelation
 
@@ -42,6 +52,12 @@ This project implements various pixelation techniques for image processing. Each
 
 - **Description:** A more complex technique that involves warping and blending multiple face images. Not strictly a form of pixelation.
 - **Reference:** [Medium - Face Morphing Using OpenCV](https://medium.com/@thakuravnish2313/face-morphing-using-opencv-a-fun-experiment-with-python-81cf791fe464)
+
+
+## Evaluation Metrics
+- **PSNR (Peak Signal-to-Noise Ratio)**: Measures the ratio between the maximum possible power of a signal and the power of corrupting noise.
+- **SSIM (Structural Similarity Index)**: Measures the similarity between two images.
+
 
 ## Usage
 
