@@ -33,7 +33,7 @@ def update_params(frame, method):
             block_size_entry.grid(row=0, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=0, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Adjust the block size to control the level of pixelation. Larger blocks create a more pixelated effect.')
+            ToolTip(question_mark, text=config.tooltip_labels["basic_pixelation"]["block_size"])
             config.params["block_size"] = block_size_entry
 
             config.description_text.insert(tk.END, "Basic Pixelization:\nThis method divides the image into uniform square blocks and replaces each block with a solid color representing the average color of the pixels within that block. The 'Block Size' parameter determines the size of these blocks. A smaller block size results in finer pixelation, preserving more details, while a larger block size creates a more abstract, mosaic-like effect.")
@@ -45,7 +45,7 @@ def update_params(frame, method):
             kernel_size_entry.grid(row=0, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=0, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='[MUST BE ODD] Adjust the kernel size to control the blur intensity. Larger values result in a smoother, more blended appearance.')
+            ToolTip(question_mark, text= config.tooltip_labels["gaussian_blur"]["kernel_size"])
             config.params["kernel_size"] = kernel_size_entry
 
             config.description_text.insert(tk.END, "\n\nGaussian Blur:\nThis method applies a Gaussian blur to the image, creating a smooth, blurred effect. The 'Kernel Size' parameter determines the size of the kernel used for blurring. A larger kernel size results in a stronger blur effect, making the image more blurry, while a smaller kernel size retains more of the image's details. The kernel size should be an odd number to ensure a symmetric blur effect.")
@@ -57,7 +57,7 @@ def update_params(frame, method):
             min_block_size_entry.grid(row=0, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=0, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Set the minimum block size for pixelation. Smaller values retain more detail in high-variance areas.')
+            ToolTip(question_mark, text= config.tooltip_labels["adaptive_pixelation"]["min_block_size"])
             config.params["min_block_size"] = min_block_size_entry
 
             max_block_size_label = tk.Label(frame, text="Max Block Size:")
@@ -66,7 +66,7 @@ def update_params(frame, method):
             max_block_size_entry.grid(row=1, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=1, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Set the maximum block size for pixelation. Larger values create stronger pixelation in low-variance areas.')
+            ToolTip(question_mark, text= config.tooltip_labels["adaptive_pixelation"]["max_block_size"])
             config.params["max_block_size"] = max_block_size_entry
 
             variance_threshold_label = tk.Label(frame, text="Variance Threshold:")
@@ -75,7 +75,7 @@ def update_params(frame, method):
             variance_threshold_entry.grid(row=2, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=2, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Adjust the threshold for variance. Higher values increase the areas pixelated with the maximum block size.')
+            ToolTip(question_mark, text= config.tooltip_labels["adaptive_pixelation"]["variance_threshold"])
             config.params["variance_threshold"] = variance_threshold_entry
 
             config.description_text.insert(tk.END, "\n\nAdaptive Pixelization:\nThis method adjusts the pixelization block size based on the local variance of the image. Areas with higher variance (more detail or texture) are pixelized with smaller blocks, while areas with lower variance (more uniform) use larger blocks. 'Min Block Size' sets the smallest block size used for high-variance areas, while 'Max Block Size' sets the largest block size for low-variance areas. 'Variance Threshold' determines the level of variance at which the block size changes. A lower threshold means that more areas will be considered high-variance and pixelized with smaller blocks.")
@@ -87,7 +87,7 @@ def update_params(frame, method):
             num_clusters_entry.grid(row=0, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=0, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Set the number of color clusters. More clusters capture finer color details.')
+            ToolTip(question_mark, text= config.tooltip_labels["clustering_with_pixelation"]["num_clusters"])
             config.params["num_clusters"] = num_clusters_entry
 
             block_size_label = tk.Label(frame, text="Block Size:")
@@ -96,7 +96,7 @@ def update_params(frame, method):
             block_size_entry.grid(row=1, column=1, padx=5, pady=5)
             question_mark = tk.Label(frame, text="?", font=("Arial", 10, "bold"), fg="blue", cursor="hand2")
             question_mark.grid(row=1, column=2, padx=5, pady=5)
-            ToolTip(question_mark, text='Adjust the block size to control the level of pixelation. Larger blocks create a more pixelated effect.')
+            ToolTip(question_mark, text= config.tooltip_labels["clustering_with_pixelation"]["block_size"])
             config.params["block_size"] = block_size_entry
 
             config.description_text.insert(tk.END, "\n\nClustering with Pixelization:\nThis method combines k-means clustering with pixelization. First, k-means clustering groups similar pixels into clusters based on their color values. Then, basic pixelization is applied to each cluster separately. 'Number of Clusters' determines how many clusters are created; a higher number results in more clusters and a more detailed image, while a lower number creates fewer clusters and a more abstract image. 'Block Size' sets the size of the pixelization blocks, with the same effects as in basic pixelization.")
@@ -109,7 +109,7 @@ method_descriptions = {
     "Adaptive Pixelization": "Adaptive Pixelization description...\n\nMin Block Size: Description...\nMax Block Size: Description...\nVariance Threshold: Description...",
 }
 
-def apply_pixelation(pixelation_method, method_name, input_folder, output_folder):
+def apply_pixelation(pixelation_method, method_name, input_folder, output_folder, progress_bar):
     if input_folder is None:
         os.makedirs("Input", exist_ok=True)
         config.input_folder = "Input"
@@ -117,11 +117,17 @@ def apply_pixelation(pixelation_method, method_name, input_folder, output_folder
         os.makedirs("Output", exist_ok=True)
         config.output_folder = "Output"
     print(f"Applying {method_name} to images in {input_folder} to {output_folder}")
+        # Get the list of images to process
+    image_files = [f for f in os.listdir(input_folder) if os.path.isfile(os.path.join(input_folder, f))]
+    total_images = len(image_files)
+
+    # Set the maximum value of the progress bar
+    progress_bar["maximum"] = total_images
     errors = 0
     passes = 0
     params_dict = {key: entry.get() for key, entry in config.params.items()}
     # Convert parameters to their expected data types
-    int_params = ['block_size', 'kernel_size', 'min_block_size', 'max_block_size', 'num_clusters']
+    int_params = ['block_size', 'kernel_size', 'min_block_size', 'max_block_size', 'num_clusters', 'variance_threshold']
     for param in int_params:
         if param in params_dict:
             try:
@@ -150,14 +156,24 @@ def apply_pixelation(pixelation_method, method_name, input_folder, output_folder
                 logging.error(f"An error occurred: {e}")
                 messagebox.showerror("Error", f"An error occurred while processing {filename}.")
                 errors += 1
+            # Update the progress bar
+            progress_bar["value"] += 1
+            progress_bar.update()
         else:
             logging.info(f"Skipping non-image file: {filename}")
-            errors += 1
-
+            errors += 1      
+    # Reset the progress bar when done
+    progress_bar["value"] = 0
     logging.info(f"Pixelation applied successfully to all images in {input_folder}, with {passes} successful and {errors} errors.")
     messagebox.showinfo("Pixelation Complete", f"Pixelation applied successfully to all images in {input_folder}, with {passes} successful and {errors} errors.")
 
-def evaluate_images():
+def evaluate_images(progress_bar):
+    # Get the list of images to process
+    image_files = [f for f in os.listdir(config.output_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+    total_images = len(image_files)
+
+    # Set the maximum value of the progress bar
+    progress_bar["maximum"] = total_images
     errors = 0
     passes = 0
     error_array = []
@@ -217,6 +233,9 @@ def evaluate_images():
                     logging.error(f"Could not read {original_image_path} or {pixelated_image_path}. Skipping...")
                     errors += 1
                     error_array.append(f"Error with {original_image_path} or {pixelated_image_path}")
+                # Update the progress bar
+                progress_bar["value"] += 1
+                progress_bar.update()
             except Exception as e:
                 logging.error(f"An error occurred: {e}")
 
@@ -229,6 +248,8 @@ def evaluate_images():
         f"Passed: {passes}. Errors occurred: {errors}\n\n"
         "Error List:\n" + "\n".join(error_array)
         )
+        progress_bar["value"] = 0
+
 
 
 def add_tooltip_labels(gui_code, tooltip_labels):
@@ -260,23 +281,7 @@ def add_tooltip_labels(gui_code, tooltip_labels):
     return gui_code
 
 # Define the tooltip labels for each pixelation method
-tooltip_labels = {
-    "basic_pixelization": {
-        "block_size": "Adjust the block size to control the level of pixelation. Larger blocks create a more pixelated effect."
-    },
-    "gaussian_blur": {
-        "kernel_size": "Adjust the kernel size to control the blur intensity. Larger values result in a smoother, more blended appearance."
-    },
-    "adaptive_pixelation": {
-        "min_block_size": "Set the minimum block size for pixelation. Smaller values retain more detail in high-variance areas.",
-        "max_block_size": "Set the maximum block size for pixelation. Larger values create stronger pixelation in low-variance areas.",
-        "variance_threshold": "Adjust the threshold for variance. Higher values increase the areas pixelated with the maximum block size."
-    },
-    "clustering_with_pixelization": {
-        "num_clusters": "Set the number of color clusters. More clusters capture finer color details.",
-        "block_size": "Adjust the block size to control the level of pixelation. Larger blocks create a more pixelated effect."
-    }
-}
+
 
 class ToolTip(object):
 
@@ -419,15 +424,22 @@ def create_gui():
         def on_method_change(event):
             update_params(params_frame, selected_method.get())  # Update params when the method is changed
         pixelation_menu.bind("<<ComboboxSelected>>", on_method_change)
+        
+        # Create the progress bar
+        progress_bar = ttk.Progressbar(root, length=200, mode='determinate')
+        progress_bar.grid(row=3, column=0, columnspan=2, padx=5, pady=10, sticky="ew")
 
-        btn_apply = tk.Button(pixelation_frame, text="Apply Pixelation", command=lambda: apply_pixelation(pixelation_methods[selected_method.get()], selected_method.get(), config.input_folder, config.output_folder))
+        # Pass the progress bar to the apply_pixelation function
+        btn_apply = tk.Button(pixelation_frame, text="Apply Pixelation", command=lambda: apply_pixelation(pixelation_methods[selected_method.get()], selected_method.get(), config.input_folder, config.output_folder, progress_bar))
         btn_apply.grid(row=2, column=0, padx=5, pady=5)
+
+
 
         # Frame for evaluation
         evaluation_frame = tk.Frame(root)
         evaluation_frame.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
 
-        btn_evaluate = tk.Button(evaluation_frame, text="Evaluate Images", command=evaluate_images)
+        btn_evaluate = tk.Button(evaluation_frame, text="Evaluate Images", command=lambda: evaluate_images(progress_bar))
         btn_evaluate.pack()
 
         root.mainloop()
