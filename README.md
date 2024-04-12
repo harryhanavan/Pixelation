@@ -61,6 +61,25 @@ This project implements various pixelation techniques for image processing. Each
 
 ## Usage
 
+Install Pip:
+
+curl -O https://bootstrap.pypa.io/get-pip.py
+or
+
+bash
+
+wget https://bootstrap.pypa.io/get-pip.py
+
+
+Then:
+python get-pip.py
+
+Lastly Install the Requirements
+
+pip install -r requirements.txt
+
+
+
 To use these pixelation methods, import the desired function from the `pixelation_methods.py` file and apply it to your image. For example:
 
 ```python
