@@ -1,71 +1,141 @@
 Original Image,Pixelated Image,Pixelation Type,Parameters,SSIM,PSNR
+000001.jpg,000001-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.28664354469117265,28.58645225895208
 000001.jpg,000001-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.6630921663984547,29.63374587435116
 000001.jpg,000001-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6089342658890056,29.180281536398063
+000001.jpg,000001-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.462117250870893,28.208540961375604
 000001.jpg,000001-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.5131562185029683,29.32502306298229
 000001.jpg,000001-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.4272830991461378,29.00300131549891
 000001.jpg,000001-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.4352613215110886,29.28615697888285
 000001.jpg,000001-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.43159319946408836,29.205183849128492
 000001.jpg,000001-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.3644381577808003,29.19066368398478
+000001.jpg,000001-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.2998286560213849,28.88708040144116
+000001.jpg,000001-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.36447410246759987,28.947214891755948
+000001.jpg,000001-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.3638785570969434,28.729585733398004
+000001.jpg,000001-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.7599174653917916,30.826821809208745
+000001.jpg,000001-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.6907945552992705,30.420648629412696
+000002.jpg,000002-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.40628265523025175,28.54037451684599
 000002.jpg,000002-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.7083242303325842,29.977893411006843
 000002.jpg,000002-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.650222749487404,29.095265266146463
+000002.jpg,000002-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.48958366760687466,28.101598379918713
 000002.jpg,000002-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.638330987026185,29.6536479403662
 000002.jpg,000002-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.5508523445211113,29.10012245465767
 000002.jpg,000002-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.5910226944617245,29.684518926092235
 000002.jpg,000002-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.5839618753942811,29.453339673641214
 000002.jpg,000002-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.4774177088204054,29.431762301669888
+000002.jpg,000002-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.424368192561682,28.741505676560234
+000002.jpg,000002-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.47273181454752783,28.82937762217813
+000002.jpg,000002-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.4690408377967841,28.492490653095658
+000002.jpg,000002-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.93512670523668,34.61715213141926
+000002.jpg,000002-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8950784622635218,33.3920682746428
+000003.jpg,000003-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.7027699557401386,29.863764221564352
 000003.jpg,000003-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.8426342769683134,31.96220239789649
 000003.jpg,000003-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.8283776991605987,31.440128275714137
+000003.jpg,000003-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.7512221534511205,28.829428012173896
 000003.jpg,000003-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.8291578334325233,32.19762546264859
 000003.jpg,000003-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.7734003380909366,31.153257163185177
 000003.jpg,000003-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.7903542514933819,32.30847822670951
 000003.jpg,000003-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.794300685307668,32.04284002357119
 000003.jpg,000003-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.7577867012978272,32.55062967010207
+000003.jpg,000003-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.7151803617728447,31.310302446324236
+000003.jpg,000003-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.7600879900496458,31.32249846532033
+000003.jpg,000003-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.7549315069323657,30.18581451694334
+000003.jpg,000003-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.9842094332348402,40.75755538723872
+000003.jpg,000003-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.9705241156440336,38.5629807533155
+000004.jpg,000004-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.3993495399870786,29.560072751123464
 000004.jpg,000004-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.6869003671535268,30.670403059209384
 000004.jpg,000004-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6394025943193418,30.17778773120863
+000004.jpg,000004-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.48262845640215823,29.165585747523792
 000004.jpg,000004-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.5489688593073305,30.29168903085624
 000004.jpg,000004-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.4957840983437479,30.05427640953366
 000004.jpg,000004-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.48632603855580114,30.21610582544261
 000004.jpg,000004-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.48405454643822554,30.15222764067054
 000004.jpg,000004-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.4326360505360056,29.99923259158721
+000004.jpg,000004-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.38653001635992557,29.675253413951506
+000004.jpg,000004-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.416745660992639,29.878595508356504
+000004.jpg,000004-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.36803527260718827,29.52104081795572
+000004.jpg,000004-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.7092181708075781,31.189846402647078
+000004.jpg,000004-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.6450243485682907,30.912190200327622
+000005.jpg,000005-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.5345049518629166,29.12996151185983
 000005.jpg,000005-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.763316653132038,30.662254266944046
 000005.jpg,000005-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.7181236700814433,30.037783411778868
+000005.jpg,000005-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.5966506346861837,28.7065561103583
 000005.jpg,000005-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.7160170757771086,30.451565291063304
 000005.jpg,000005-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.6328458323470153,29.790689999511546
 000005.jpg,000005-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.6655496330180968,30.514779223954747
 000005.jpg,000005-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.6577376292990624,30.312482830628692
 000005.jpg,000005-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.5779793609151835,30.247857972670026
+000005.jpg,000005-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.5351951753324264,29.50570780736346
+000005.jpg,000005-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.5791682467253075,29.830457713442303
+000005.jpg,000005-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.5794781266344406,29.128195340529864
+000005.jpg,000005-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.9582698116720847,35.62430417493965
+000005.jpg,000005-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.928251650290764,34.15441745471709
+000006.jpg,000006-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.4298373896602597,28.987830647543195
 000006.jpg,000006-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.7474836874712192,30.71839681996692
 000006.jpg,000006-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6723869842079924,29.90448488118362
+000006.jpg,000006-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.46885104701430697,28.55790703888221
 000006.jpg,000006-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.6484760692208096,30.212012786800546
 000006.jpg,000006-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.569357809225792,29.751123304633794
 000006.jpg,000006-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.5768828028382419,30.15577881284147
 000006.jpg,000006-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.5689847506319309,29.987596685120064
 000006.jpg,000006-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.4924274434374629,29.91113289636857
+000006.jpg,000006-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.43036780160333504,29.41177747430583
+000006.jpg,000006-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.4930713238233515,29.653524510362118
+000006.jpg,000006-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.4956115054187417,28.482000931243668
+000006.jpg,000006-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.897607435416916,33.016804189969214
+000006.jpg,000006-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8426063870355439,32.198029924810655
+000007.jpg,000007-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.3888472926682819,28.874332765356236
 000007.jpg,000007-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.701444748235719,30.446631942120916
 000007.jpg,000007-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6290330992728916,29.629042547491405
+000007.jpg,000007-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.46175652796474537,28.466400757018704
 000007.jpg,000007-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.6141999436339977,29.97125419928515
 000007.jpg,000007-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.528364507991134,29.56093555072554
 000007.jpg,000007-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.5552645405410171,29.969505965292612
 000007.jpg,000007-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.5466917946582919,29.796272448229793
 000007.jpg,000007-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.4722531726361277,29.69016733526926
+000007.jpg,000007-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.419768077176917,29.11423446726308
+000007.jpg,000007-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.47268747594504246,29.161864211825083
+000007.jpg,000007-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.47052829537261237,28.912978368990938
+000007.jpg,000007-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.8929591074051371,32.85749281874245
+000007.jpg,000007-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8420327953816092,32.05232275574708
+000008.jpg,000008-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.43725105267086234,28.929444975625486
 000008.jpg,000008-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.7129184223312195,30.527598480434975
 000008.jpg,000008-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6591099756959833,29.80673285382196
+000008.jpg,000008-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.49449210696654944,28.404149593068965
 000008.jpg,000008-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.6350686286454157,30.216535182141918
 000008.jpg,000008-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.5618948953132932,29.54088249850188
 000008.jpg,000008-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.5627443755853125,30.157979690208748
 000008.jpg,000008-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.5586398317479788,29.91849149493319
 000008.jpg,000008-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.49611405541282844,29.946550300592826
+000008.jpg,000008-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.4493561501127842,29.088982429118722
+000008.jpg,000008-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.494612347633569,29.61427948738258
+000008.jpg,000008-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.4820767185261959,28.875831223966202
+000008.jpg,000008-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.9123214953958699,33.799821264269696
+000008.jpg,000008-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8631538947786509,32.90086800815629
+000009.jpg,000009-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.4320155173177306,28.965151396277008
 000009.jpg,000009-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.7281688228218048,30.255086256804287
 000009.jpg,000009-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6574397360422365,29.526741784810298
+000009.jpg,000009-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.4742491767119047,28.341186053628704
 000009.jpg,000009-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.6243280200437966,29.99868194473696
 000009.jpg,000009-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.555276993170552,29.46360124858838
 000009.jpg,000009-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.5588658357339727,29.960937949923988
 000009.jpg,000009-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.5561136924666146,29.811197084613752
 000009.jpg,000009-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.4723734864400897,29.755723237930532
+000009.jpg,000009-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.4141830348984669,29.083111400346194
+000009.jpg,000009-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.46938182790791705,29.408124828881338
+000009.jpg,000009-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.46263136242248476,28.865155809369917
+000009.jpg,000009-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.8649262855502026,32.84494535672766
+000009.jpg,000009-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8130326578684467,32.15789160448226
+000010.jpg,000010-Adaptive Pixelization-min_block_size-10_max_block_size-30_variance_threshold-60.jpg,Adaptive Pixelization,"""min, block, size-10, max, block, size-30, variance, threshold-60""",0.43804449723716915,29.169888605634902
 000010.jpg,000010-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-11.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-11""",0.7449566568893417,31.06001960271776
 000010.jpg,000010-Adaptive Pixelization-min_block_size-2_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-10, variance, threshold-50""",0.6625814714213775,30.072619457729097
+000010.jpg,000010-Adaptive Pixelization-min_block_size-2_max_block_size-50_variance_threshold-100.jpg,Adaptive Pixelization,"""min, block, size-2, max, block, size-50, variance, threshold-100""",0.45674441209755473,28.680981937872488
 000010.jpg,000010-Adaptive Pixelization-min_block_size-4_max_block_size-10_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-4, max, block, size-10, variance, threshold-50""",0.6835838937840215,30.63084595797755
 000010.jpg,000010-Adaptive Pixelization-min_block_size-5_max_block_size-15_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-5, max, block, size-15, variance, threshold-50""",0.5909825498273742,30.01132137754599
 000010.jpg,000010-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-25.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-25""",0.6229523222157526,30.56528295512115
 000010.jpg,000010-Adaptive Pixelization-min_block_size-6_max_block_size-12_variance_threshold-50.jpg,Adaptive Pixelization,"""min, block, size-6, max, block, size-12, variance, threshold-50""",0.6168695596538212,30.3721298871433
 000010.jpg,000010-Basic Pixelization-block_size-10.jpg,Basic Pixelization,"""block, size-10""",0.5423041962163451,30.249900004969366
+000010.jpg,000010-Basic Pixelization-block_size-16.jpg,Basic Pixelization,"""block, size-16""",0.47686181811741424,29.634138751440556
+000010.jpg,000010-Clustering with Pixelization-num_clusters-10_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-10, block, size-10""",0.520565699459118,29.453303756916995
+000010.jpg,000010-Clustering with Pixelization-num_clusters-5_block_size-10.jpg,Clustering with Pixelization,"""num, clusters-5, block, size-10""",0.493335221597952,28.547341667866593
+000010.jpg,000010-Gaussian Blur-kernel_size-5.jpg,Gaussian Blur,"""kernel, size-5""",0.9165074699964889,34.371424135122425
+000010.jpg,000010-Gaussian Blur-kernel_size-7.jpg,Gaussian Blur,"""kernel, size-7""",0.8748399359340637,33.21471911362067

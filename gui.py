@@ -35,7 +35,7 @@ def update_params(frame, method):
             question_mark.grid(row=0, column=2, padx=5, pady=5)
             ToolTip(question_mark, text=config.tooltip_labels["basic_pixelation"]["block_size"])
             config.params["block_size"] = block_size_entry
-
+            config.description_text.delete(1.0, tk.END)
             config.description_text.insert(tk.END, "Basic Pixelization:\nThis method divides the image into uniform square blocks and replaces each block with a solid color representing the average color of the pixels within that block. The 'Block Size' parameter determines the size of these blocks. A smaller block size results in finer pixelation, preserving more details, while a larger block size creates a more abstract, mosaic-like effect.")
 
         elif method == "Gaussian Blur":
@@ -47,8 +47,8 @@ def update_params(frame, method):
             question_mark.grid(row=0, column=2, padx=5, pady=5)
             ToolTip(question_mark, text= config.tooltip_labels["gaussian_blur"]["kernel_size"])
             config.params["kernel_size"] = kernel_size_entry
-
-            config.description_text.insert(tk.END, "\n\nGaussian Blur:\nThis method applies a Gaussian blur to the image, creating a smooth, blurred effect. The 'Kernel Size' parameter determines the size of the kernel used for blurring. A larger kernel size results in a stronger blur effect, making the image more blurry, while a smaller kernel size retains more of the image's details. The kernel size should be an odd number to ensure a symmetric blur effect.")
+            config.description_text.delete(1.0, tk.END)
+            config.description_text.insert(tk.END, "Gaussian Blur:\nThis method applies a Gaussian blur to the image, creating a smooth, blurred effect. The 'Kernel Size' parameter determines the size of the kernel used for blurring. A larger kernel size results in a stronger blur effect, making the image more blurry, while a smaller kernel size retains more of the image's details. The kernel size should be an odd number to ensure a symmetric blur effect.")
 
         elif method == "Adaptive Pixelization":
             min_block_size_label = tk.Label(frame, text="Min Block Size:")
@@ -77,8 +77,8 @@ def update_params(frame, method):
             question_mark.grid(row=2, column=2, padx=5, pady=5)
             ToolTip(question_mark, text= config.tooltip_labels["adaptive_pixelation"]["variance_threshold"])
             config.params["variance_threshold"] = variance_threshold_entry
-
-            config.description_text.insert(tk.END, "\n\nAdaptive Pixelization:\nThis method adjusts the pixelization block size based on the local variance of the image. Areas with higher variance (more detail or texture) are pixelized with smaller blocks, while areas with lower variance (more uniform) use larger blocks. 'Min Block Size' sets the smallest block size used for high-variance areas, while 'Max Block Size' sets the largest block size for low-variance areas. 'Variance Threshold' determines the level of variance at which the block size changes. A lower threshold means that more areas will be considered high-variance and pixelized with smaller blocks.")
+            config.description_text.delete(1.0, tk.END)
+            config.description_text.insert(tk.END, "Adaptive Pixelization:\nThis method adjusts the pixelization block size based on the local variance of the image. Areas with higher variance (more detail or texture) are pixelized with smaller blocks, while areas with lower variance (more uniform) use larger blocks. 'Min Block Size' sets the smallest block size used for high-variance areas, while 'Max Block Size' sets the largest block size for low-variance areas. 'Variance Threshold' determines the level of variance at which the block size changes. A lower threshold means that more areas will be considered high-variance and pixelized with smaller blocks.")
 
         elif method == "Clustering with Pixelization":
             num_clusters_label = tk.Label(frame, text="Number of Clusters:")
@@ -98,8 +98,8 @@ def update_params(frame, method):
             question_mark.grid(row=1, column=2, padx=5, pady=5)
             ToolTip(question_mark, text= config.tooltip_labels["clustering_with_pixelation"]["block_size"])
             config.params["block_size"] = block_size_entry
-
-            config.description_text.insert(tk.END, "\n\nClustering with Pixelization:\nThis method combines k-means clustering with pixelization. First, k-means clustering groups similar pixels into clusters based on their color values. Then, basic pixelization is applied to each cluster separately. 'Number of Clusters' determines how many clusters are created; a higher number results in more clusters and a more detailed image, while a lower number creates fewer clusters and a more abstract image. 'Block Size' sets the size of the pixelization blocks, with the same effects as in basic pixelization.")
+            config.description_text.delete(1.0, tk.END)
+            config.description_text.insert(tk.END, "Clustering with Pixelization:\nThis method combines k-means clustering with pixelization. First, k-means clustering groups similar pixels into clusters based on their color values. Then, basic pixelization is applied to each cluster separately. 'Number of Clusters' determines how many clusters are created; a higher number results in more clusters and a more detailed image, while a lower number creates fewer clusters and a more abstract image. 'Block Size' sets the size of the pixelization blocks, with the same effects as in basic pixelization.")
     except Exception as e:
         logging.error(f"An error occurred: {e}")
 
@@ -159,11 +159,13 @@ def apply_pixelation(pixelation_method, method_name, input_folder, output_folder
             # Update the progress bar
             progress_bar["value"] += 1
             progress_bar.update()
+            # progress_status = tk.Label(root, text=f"Progress: {progress_bar['value']} / {total_images}")
         else:
             logging.info(f"Skipping non-image file: {filename}")
             errors += 1      
     # Reset the progress bar when done
     progress_bar["value"] = 0
+    # progress_status = tk.Label(root, text=f"Progress: Done")
     logging.info(f"Pixelation applied successfully to all images in {input_folder}, with {passes} successful and {errors} errors.")
     messagebox.showinfo("Pixelation Complete", f"Pixelation applied successfully to all images in {input_folder}, with {passes} successful and {errors} errors.")
 
@@ -234,8 +236,11 @@ def evaluate_images(progress_bar):
                     errors += 1
                     error_array.append(f"Error with {original_image_path} or {pixelated_image_path}")
                 # Update the progress bar
+                root = tk.Tk()  # Define the root variable
                 progress_bar["value"] += 1
                 progress_bar.update()
+
+                # progress_status = tk.Label(root, text=f"Progress: {progress_bar['value']} / {total_images}")
             except Exception as e:
                 logging.error(f"An error occurred: {e}")
 
@@ -249,6 +254,8 @@ def evaluate_images(progress_bar):
         "Error List:\n" + "\n".join(error_array)
         )
         progress_bar["value"] = 0
+        # progress_status = tk.Label(root, text=f"Progress: Done")
+        
 
 
 
@@ -426,8 +433,11 @@ def create_gui():
         pixelation_menu.bind("<<ComboboxSelected>>", on_method_change)
         
         # Create the progress bar
-        progress_bar = ttk.Progressbar(root, length=200, mode='determinate')
-        progress_bar.grid(row=3, column=0, columnspan=2, padx=5, pady=10, sticky="ew")
+        progress_bar = ttk.Progressbar(root, length=5, mode='determinate')
+        progress_bar.grid(row=3, column=1, columnspan=5, padx=5, pady=10, sticky="ew")
+
+        # progress_status = tk.Label(root, text="Progress:")
+        # progress_status.grid(row=4, column=0, padx=5, pady=5)
 
         # Pass the progress bar to the apply_pixelation function
         btn_apply = tk.Button(pixelation_frame, text="Apply Pixelation", command=lambda: apply_pixelation(pixelation_methods[selected_method.get()], selected_method.get(), config.input_folder, config.output_folder, progress_bar))

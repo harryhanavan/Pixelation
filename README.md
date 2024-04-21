@@ -78,7 +78,7 @@ Lastly Install the Requirements
 
 pip install -r requirements.txt
 
-
+Then Run Main
 
 To use these pixelation methods, import the desired function from the `pixelation_methods.py` file and apply it to your image. For example:
 
