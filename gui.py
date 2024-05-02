@@ -236,11 +236,10 @@ def evaluate_images(progress_bar):
                     errors += 1
                     error_array.append(f"Error with {original_image_path} or {pixelated_image_path}")
                 # Update the progress bar
-                root = tk.Tk()  # Define the root variable
                 progress_bar["value"] += 1
                 progress_bar.update()
 
-                # progress_status = tk.Label(root, text=f"Progress: {progress_bar['value']} / {total_images}")
+
             except Exception as e:
                 logging.error(f"An error occurred: {e}")
 
@@ -254,7 +253,6 @@ def evaluate_images(progress_bar):
         "Error List:\n" + "\n".join(error_array)
         )
         progress_bar["value"] = 0
-        # progress_status = tk.Label(root, text=f"Progress: Done")
         
 
 
