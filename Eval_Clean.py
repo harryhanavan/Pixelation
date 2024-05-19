@@ -24,7 +24,8 @@ def parse_parameters(pixelation_type, param_string):
     elif pixelation_type == "Clustering with Pixelization":
         # Expecting format like "num, clusters-10, block, size-10"
         keys = ['Num Clusters', 'Block Size']
-    elif pixelation_type == "Guassian Blur":
+    elif pixelation_type == "Gaussian Blur":
+    
         # Expecting format like "kernel, size-11"
         keys = ['Kernel Size']
     else:
